@@ -14,7 +14,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   // variables that can change
   Gender selectedGender;
-  int height = 180;
+  int height = 72;
+  int weight = 150;
 
   void setSelectedGender(Gender gender) {
     setState(() {
@@ -101,8 +102,8 @@ class _InputPageState extends State<InputPage> {
                     ),
                     child: Slider(
                       value: height.toDouble(),
-                      min: 120,
-                      max: 220,
+                      min: 36,
+                      max: 100,
                       label: height.toString(),
                       onChanged: (double newValue) {
                         setState(() {
@@ -119,10 +120,51 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(
+                    colour: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kNumberTextSyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FloatingActionButton(
+                              backgroundColor: Color(0xFF4C4F5E),
+                              onPressed: () => {},
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            FloatingActionButton(
+                              backgroundColor: Color(0xFF4C4F5E),
+                              onPressed: () => {},
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(
+                    colour: kActiveCardColor,
+                  ),
                 ),
               ],
             ),
@@ -147,3 +189,4 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
+
