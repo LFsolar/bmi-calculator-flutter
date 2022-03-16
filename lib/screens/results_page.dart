@@ -5,10 +5,15 @@ import 'package:flutter/material.dart';
 import '../components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
-  // const ResultsPage({Key? key}) : super(key: key);
-  String classification = 'NORMAL';
-  double bmi = 0;
-  String advice = 'advice';
+  const ResultsPage(
+      {Key key,
+      @required this.classification,
+      @required this.bmi,
+      @required this.advice})
+      : super(key: key);
+  final String classification;
+  final String bmi;
+  final String advice;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +27,8 @@ class ResultsPage extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
+              padding: EdgeInsets.all(15),
+              alignment: Alignment.bottomLeft,
               child: const Text(
                 'Your Results',
                 style: kTitleTextStyle,
@@ -42,7 +49,7 @@ class ResultsPage extends StatelessWidget {
                       style: kResultTextStyle,
                     ),
                     Text(
-                      bmi.toString(),
+                      bmi,
                       style: kBMITextStyle,
                     ),
                     Text(
@@ -56,7 +63,7 @@ class ResultsPage extends StatelessWidget {
             ),
           ),
           BottomButton(
-            onTap: () => Navigator.pushNamed(context, '/'),
+            onTap: () => Navigator.pop(context),
             buttonTitle: 'RE-CALCULATE',
           ),
         ],
